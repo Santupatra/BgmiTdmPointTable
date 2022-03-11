@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Match List</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container my-2">
+	<h1>Match List</h1>
+	
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th> Sl No</th>
+					<th>Team</th>
+					<th>Score</th>
+					<th>Team</th>
+					<th>Score</th>
+					<th> Date </th>
+					<th> Time </th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="match, iterationStatus : ${matchList}">
+					<td th:text=${iterationStatus.count}></td>
+					<td th:text="${match.teamAName}"></td>
+					<td th:text="${match.teamAScore}"></td>
+					<td th:text="${match.teamBName}"></td>
+					<td th:text="${match.teamBScore}"></td>
+					<td th:text="${#dates.format(match.date, 'dd-MM-yyyy')}"></td>
+					<!-- <td th:text="${match.date}"></td> -->
+					<td th:text="${match.time}"></td>
+					<td><div th:if="${match.teamAScore == 0}"><a th:href="@{/admin/bgmi/the/addDateTimeFrom/{id}(id=${match.id})}" class="btn btn-primary">Add Date And Time</a>
+					    <a th:href="@{/admin/bgmi/the/startMatchFrom/{id}(id=${match.id})}" class="btn btn-success">Start Match</a>
+					   <a th:href="@{/admin/bgmi/the/addResultFrom/{id}(id=${match.id})}" class="btn btn-warning">Add Result</a></div>
+					   <div th:if="${match.teamAScore != 0}">
+					   <a th:href="@{/admin/bgmi/the/removeResultFrom/{id}(id=${match.id})}" class="btn btn-warning">Remove Result</a></div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/admin/bgmi/the/startAdmin}"> Back to start Page</a>
+	</div>
+</body>
+</html>

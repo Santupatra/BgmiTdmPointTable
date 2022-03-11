@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Point Table</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container my-2">
+	<h1>Point Table</h1>
+	
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th> Sl No</th>
+					<th>Team</th>
+					<th>Match Played</th>
+					<th>Match Win</th>
+					<th>Match Loose</th>
+					<th>Points Gain</th>
+					<th>Points Loose</th>
+					<th>Difference</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="team,iterationStatus : ${teamList}">
+					<td th:text=${iterationStatus.count}></td>
+					<td th:text="${team.name}"></td>
+					<td th:text="${team.matchPlayed}"></td>
+					<td th:text="${team.matchWin}"></td>
+					<td th:text="${team.matchLoose}"></td>
+					<td th:text="${team.pointsGain}"></td>
+					<td th:text="${team.pointsLoose}"></td>
+					<td th:text="${team.pointsDiff}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/team/timeTable}"> Back to Time Table</a>
+	</div>
+</body>
+</html>

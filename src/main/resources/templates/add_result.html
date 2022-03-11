@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Add Result</h1>
+		<hr>
+		<form action="#" th:action="@{/admin/bgmi/the/addResult}" th:object="${match}"
+			method="POST">
+
+			<input type="hidden" th:field="*{id}" />
+			<label th:text="*{teamAName}"></label>
+			<input type="text" th:field="*{teamAScore}" class="form-control mb-4 col-4"> 
+			<label th:text="*{teamBName}"></label>
+			<input type="text" th:field="*{teamBScore}" class="form-control mb-4 col-4"> 
+			
+			<button type="submit" class="btn btn-info col-2"> Add Result</button>
+		</form>
+		<hr>
+		<a th:href="@{/admin/bgmi/the/matchTableAdmin}"> Back to Match List</a>
+	</div>
+</body>
+</html>

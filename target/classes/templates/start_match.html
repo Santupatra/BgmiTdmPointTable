@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Start Match</h1>
+		<hr>
+		<form action="#" th:action="@{/admin/bgmi/the/startMatch}" th:object="${match}"
+			method="POST">
+
+			<input type="hidden" th:field="*{id}" />
+			<label th:text="*{teamAName}"></label> VS 
+			<label th:text="*{teamBName}"></label>
+			<input type="hidden" th:field="*{teamAId}" />
+			<input type="hidden" th:field="*{teamBId}" />
+			<input type="hidden" th:field="*{time}" />
+			<input type="text" th:field="*{roomNumber}" placeholder="Room Id" class="form-control mb-4 col-4"> 
+			<input type="text" th:field="*{roomPassword}" placeholder="Room Password" class="form-control mb-4 col-4"> 
+			
+			<button type="submit" class="btn btn-info col-2"> Start</button>
+		</form>
+		<hr>
+		<a th:href="@{/admin/bgmi/the/matchTableAdmin}"> Back to Match List</a>
+	</div>
+</body>
+</html>

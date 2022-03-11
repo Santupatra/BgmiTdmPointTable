@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Time Table</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container my-2">
+	<h1>Time Table</h1>
+	
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th> Sl No</th>
+					<th>Team</th>
+					<th>Score</th>
+					<th>Team</th>
+					<th>Score</th>
+					<th> Date </th>
+					<th> Time </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="match, iterationStatus : ${matchList}">
+					<td th:text=${iterationStatus.count}></td>
+					<td th:text="${match.teamAName}"></td>
+					<td th:text="${match.teamAScore}"></td>
+					<td th:text="${match.teamBName}"></td>
+					<td th:text="${match.teamBScore}"></td>
+					<td th:text="${#dates.format(match.date, 'dd-MM-yyyy')}"></td>
+					<td th:text="${match.time}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/team/pointTable}"> Back to Point Table</a>
+	</div>
+</body>
+</html>

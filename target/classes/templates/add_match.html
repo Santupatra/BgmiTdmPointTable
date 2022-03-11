@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Add Match</h1>
+		<hr>
+		 <form name='f' th:action="@{/admin/bgmi/the/addMatch}" th:object="${match}" method='POST'>
+        <table>
+            <tr>
+                <td>Select Team A:</td>
+                <td>
+                    <select th:field="*{teamAId}">
+                         <option value="0"> -- </option>
+                         <option th:each="team : ${teamList}"
+                            th:value="${team.id}"
+                            th:utext="${team.name}"/>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Select Team B:</td>
+                <td>
+                    <select th:field="*{teamBId}">
+                         <option value="0"> -- </option>
+                         <option th:each="team : ${teamList}"
+                            th:value="${team.id}"
+                            th:utext="${team.name}"/>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input name="submit" type="submit" value="submit" /></td>
+            </tr>
+        </table>
+    </form>
+		<hr>
+		<a th:href="@{/admin/bgmi/the/matchTableAdmin}"> Back to Match List</a>
+	</div>
+</body>
+</html>
