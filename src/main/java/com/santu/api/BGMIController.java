@@ -26,6 +26,8 @@ public class BGMIController {
 
 	@GetMapping(value = "/startAdmin")
 	public String start(Model model) {
+		List<Team> teamList = bGMIService.getTeams();
+		model.addAttribute("teamList", teamList);
 		return "start";
 	}
 	@GetMapping(value = "/addTeamForm")
@@ -106,7 +108,7 @@ public class BGMIController {
 		bGMIService.removeResult(id);
 		Match match = bGMIService.getMatch(id);
 		model.addAttribute("match", match);
-		return "add_result";
+		return "redirect:/admin/bgmi/the/matchTableAdmin";
 	}
 	@GetMapping(value = "/timeTable")
 	public String timeTable( Model model) {

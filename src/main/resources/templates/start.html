@@ -10,8 +10,56 @@
 <title>Start</title>
 </head>
 <body>
-     <a th:href = "@{/admin/bgmi/the/addTeamForm}" class="btn btn-primary btn-sm mb-3"> Add Team </a>
-     <a th:href = "@{/team/pointTable}" class="btn btn-primary btn-sm mb-3"> Point Table </a>
-     <a th:href = "@{/admin/bgmi/the/matchTableAdmin}" class="btn btn-primary btn-sm mb-3"> Match Table </a>
-     <a th:href = "@{/admin/bgmi/the/addMatchForm}" class="btn btn-primary btn-sm mb-3"> Add Match</a>
+	<div class="container my-2">
+	<h1>Admin Access Only</h1>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th><a th:href="@{/admin/bgmi/the/addTeamForm}"
+						class="btn btn-primary btn-sm mb-3"> Add Team </a></th>
+					<!-- <th><a th:href="@{/team/pointTable}" class="btn btn-primary btn-sm mb-3">
+		Point Table </a></th> -->
+					<th><a th:href="@{/admin/bgmi/the/matchTableAdmin}"
+						class="btn btn-primary btn-sm mb-3"> Time Table </a></th>
+					<th><a th:href="@{/admin/bgmi/the/addMatchForm}"
+						class="btn btn-primary btn-sm mb-3"> Add Match</a></th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div class="container my-2">
+		<h1>Point Table</h1>
+
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>S/N</th>
+					<th>Team</th>
+					<th>Match Played</th>
+					<th>Match Win</th>
+					<th>Match Loose</th>
+					<th>Total Kill</th>
+					<th>Total Death</th>
+					<th>Difference</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="team,iterationStatus : ${teamList}">
+					<td th:text=${iterationStatus.count}></td>
+					<td th:text="${team.name}"></td>
+					<td th:text="${team.matchPlayed}"></td>
+					<td th:text="${team.matchWin}"></td>
+					<td th:text="${team.matchLoose}"></td>
+					<td th:text="${team.pointsGain}"></td>
+					<td th:text="${team.pointsLoose}"></td>
+					<td th:text="${team.pointsDiff}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+
+
 </body>
