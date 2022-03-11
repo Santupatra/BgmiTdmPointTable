@@ -3,6 +3,7 @@ package com.santu.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -87,6 +88,8 @@ public class BGMIService {
 					match.setTeamAName(teamList.get(i).getName());
 					match.setTeamBId(teamList.get(j).getId());
 					match.setTeamBName(teamList.get(j).getName());
+					match.setDate(new Date(System.currentTimeMillis()));
+					match.setTime("00:00");
 					matchList.add(match);
 				}
 			}
@@ -105,7 +108,6 @@ public class BGMIService {
 		List<Match> sortedMatchList = allMatch.stream()
                 .sorted(compare)
                 .collect(Collectors.toList());
-		
 		
 		return sortedMatchList;
 	}
@@ -209,6 +211,8 @@ public class BGMIService {
 			teamB=findByIdB.get();
 			match.setTeamAName(teamA.getName());
 			match.setTeamBName(teamB.getName());
+			match.setDate(new Date(System.currentTimeMillis()));
+			match.setTime("00:00");
 			match.setId(sequenceGeneratorService.generateSequence(Match.SEQUENCE_NAME));
 			matchDao.save(match);
 		}
