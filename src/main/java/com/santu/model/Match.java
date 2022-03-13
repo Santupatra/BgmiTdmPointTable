@@ -30,5 +30,10 @@ public class Match {
 	
 	private String roomNumber;
 	private String roomPassword;
-
+	
+	@Transient
+	private boolean bothZero;
+	@Transient
+	private boolean orNotZero;
+	
 }

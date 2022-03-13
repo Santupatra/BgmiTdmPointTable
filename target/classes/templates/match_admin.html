@@ -36,10 +36,10 @@
 					<td th:text="${#dates.format(match.date, 'dd-MM-yyyy')}"></td>
 					<!-- <td th:text="${match.date}"></td> -->
 					<td th:text="${match.time}"></td>
-					<td><div th:if="${match.teamAScore == 0}"><a th:href="@{/admin/bgmi/the/addDateTimeFrom/{id}(id=${match.id})}" class="btn btn-primary">Add Date And Time</a>
+					<td><div th:if="${match.bothZero}"><a th:href="@{/admin/bgmi/the/addDateTimeFrom/{id}(id=${match.id})}" class="btn btn-primary">Add Date And Time</a>
 					    <a th:href="@{/admin/bgmi/the/startMatchFrom/{id}(id=${match.id})}" class="btn btn-success">Start Match</a>
 					   <a th:href="@{/admin/bgmi/the/addResultFrom/{id}(id=${match.id})}" class="btn btn-warning">Add Result</a></div>
-					   <div th:if="${match.teamAScore != 0}">
+					   <div th:if="${match.orNotZero}">
 					   <a th:href="@{/admin/bgmi/the/removeResultFrom/{id}(id=${match.id})}" class="btn btn-warning">Remove Result</a></div>
 					</td>
 				</tr>

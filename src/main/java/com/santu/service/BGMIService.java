@@ -109,6 +109,11 @@ public class BGMIService {
                 .sorted(compare)
                 .collect(Collectors.toList());
 		
+		sortedMatchList.forEach(m-> {
+			m.setBothZero((m.getTeamAScore() == 0) && (m.getTeamBScore() == 0));
+			m.setOrNotZero((m.getTeamAScore() != 0) || (m.getTeamBScore() != 0));
+		});
+		
 		return sortedMatchList;
 	}
 
